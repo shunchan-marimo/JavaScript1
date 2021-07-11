@@ -1,3 +1,4 @@
+// DOM
 let display = document.getElementById("display")
 let start = document.getElementById("start")
 let stop = document.getElementById("stop")
@@ -11,6 +12,7 @@ let milliseconds = 0;
 let status = "stop";
 let interval;
 
+// 関数（メソッド）
 function stopWatch(){
     milliseconds++;
     if(milliseconds / 10 == 1){
@@ -29,9 +31,12 @@ function stopWatch(){
     display.innerHTML = hours + ":" +minutes + ":" + seconds + ":" + milliseconds;
 }
 
+//イベント
 start.addEventListener("click", function(){
-    interval = setInterval(stopWatch, 100)
-    status = "start"
+    if(status == "stop"){
+        interval = setInterval(stopWatch, 100)
+        status = "start"
+    }
 })
 
 stop.addEventListener("click", function(){
